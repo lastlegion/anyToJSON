@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/lastlegion/toJSON/issues"
   },
-  "homepage": "https://github.com/lastlegion/toJSON"
+  "homepage": "https://github.com/lastlegion/toJSON",
+  "dependencies": {
+    "semver": "^4.3.3"
+  }
 }
