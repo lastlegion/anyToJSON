@@ -1,0 +1,28 @@
+{
+  "name": "anyToJSON",
+  "version": "1.0.0",
+  "description": "Fetches CSV, JSON data from REST APIs, Flat Files etc and converts them to JSON.",
+  "main": "anyToJSON.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lastlegion/toJSON.git"
+  },
+  "keywords": [
+    "CSV",
+    "REST",
+    "Files",
+    "JSON",
+    "conversion",
+    "data",
+    "loading"
+  ],
+  "author": "Ganesh Iyer <lastlegion@gmail.com> (http://ganeshiyer.net/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lastlegion/toJSON/issues"
+  },
+  "homepage": "https://github.com/lastlegion/toJSON"
+}
