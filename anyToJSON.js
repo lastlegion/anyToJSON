@@ -1,4 +1,28 @@
 var fs = require('fs');
+var db = require("odbc")()
+
+
+
+//
+//## odbc(path, callback)
+// - **options**: specifies the file path
+// - **callback**: the callback function
+
+function odbc(options, callback){
+  var cn = options.cn;
+  var table = options.table;
+  db.open(cn, function (err) {
+      if (err) {
+          return console.log(err);
+      }
+
+      db.query("select * from "+table, function(err, rows, moreResults){
+          exports.data = rows;
+          callback();
+      })
+   });
+
+}
 
 //
 //## json(path, callback)
