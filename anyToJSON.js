@@ -35,7 +35,7 @@ function csv(options, callback){
         data = data.slice(1).map(function(d){
           var line = {};
           d.split(",").forEach(function(d,i){
-            line[header[i]] = d;
+            line[header[i]] = d.trim();
           });
           return line;
         });    
