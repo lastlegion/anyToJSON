@@ -6,7 +6,7 @@ var fs = require('fs');
 // - **callback**: the callback function
 
 function json(options, callback){
-      console.log("json")
+      //console.log("json")
       var path = options.path;
       //Read the file using filepath
       fs.readFile(path, 'utf8', function(err, d){
@@ -30,7 +30,9 @@ function csv(options, callback){
       var path = options.path;
       fs.readFile(path, 'utf8', function(err,d){
         data = d;
+        console.log(d)
         data = data.toString().replace(/\r/g,"").split("\n");
+        
         var header = data[0].split(",");
         data = data.slice(1).map(function(d){
           var line = {};
