@@ -19,6 +19,7 @@ anyToJSON.csv({path: "100.csv"}, function(){
 
 #### Plans
 * Support for XML
-* Support for Databases(RDBMS and NoSQL)
+* ~~Support for Databases(RDBMS and NoSQL)~~(Added ODBC Suport)
 * Documentation
 * Support for Streaming data
+* Tests
