@@ -1,5 +1,6 @@
 var anyToJSON = require("../anyToJSON.js");
 var assert = require("assert");
+var server = require('../test/restServer.js');
 
 
 describe("anyToJSON", function(){
@@ -22,7 +23,7 @@ describe("anyToJSON", function(){
         })
     });
     describe("loading json from a file", function(){
-        it("should load json from a file", function(){
+        it("should load json from a file", function(done){
 
             anyToJSON.json({path: "test/test.json"}, function(){
                 var output = [{"a":"4","b":"9","c":"2","d":"3"}];
@@ -30,5 +31,36 @@ describe("anyToJSON", function(){
                 done()
             });  
         })
-    })
+    });
+    describe("loading json from rest", function(){
+        it("should load json from rest", function(done){
+            server.startServer(function(){
+                anyToJSON.restJSON({
+                    hostname: "localhost",
+                    port: 3000,
+                    path: "/json"},function(){
+                        var output = [{"a":"4","b":"9","c":"2","d":"3"}];
+
+                        assert.equal(JSON.stringify(anyToJSON.data), JSON.stringify(output));
+                        done();
+                })
+            });
+        })
+    });
+    describe("loading csv from rest", function(){
+        it("should load csv from rest", function(done){
+            server.startServer(function(){
+                anyToJSON.restCSV({
+                    hostname:"localhost",
+                    port: 3000,
+                    path: "/csv"}, function(){
+                        var output = [{"a":"4","b":"9","c":"2","d":"3"}]
+                        assert.equal(JSON.stringify(anyToJSON.data), JSON.stringify(output));
+                        done();
+                
+                })
+            })
+        })
+    });
+
 });
