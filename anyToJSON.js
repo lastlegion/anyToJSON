@@ -1,4 +1,5 @@
 var fs = require('fs');
+var csvLib = require("csv");
 
 //
 //## json(path, callback)
@@ -28,21 +29,12 @@ function json(options, callback){
 // - **callback**: the callback function
 function csv(options, callback){
       var path = options.path;
-      fs.readFile(path, 'utf8', function(err,d){
-        data = d;
-        console.log(d)
-        data = data.toString().replace(/\r/g,"").split("\n");
-        
-        var header = data[0].split(",");
-        data = data.slice(1).map(function(d){
-          var line = {};
-          d.split(",").forEach(function(d,i){
-            line[header[i]] = d.trim();
-          });
-          return line;
-        });    
-        exports.data = data;
-        callback();
+      fs.readFile(path, 'utf8', function(err,data){
+        csvLib.parse(data, {ltrim: true, columns: true}, function(err, data){
+          exports.data = data;
+          callback();
+        })
+
       });
 }
 
