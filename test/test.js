@@ -3,7 +3,7 @@ var assert = require("assert");
 
 
 describe("anyToJSON", function(){
-    describe("csv to json", function(){
+    describe("csv file to json", function(){
         it("should convert csv to json", function(done){
             anyToJSON.csv({path: "test/100.csv"}, function(){
                 var output = [{"a":"4","b":"9","c":"2","d":"3"}]
@@ -21,6 +21,14 @@ describe("anyToJSON", function(){
             })
         })
     });
+    describe("loading json from a file", function(){
+        it("should load json from a file", function(){
 
-
+            anyToJSON.json({path: "test/test.json"}, function(){
+                var output = [{"a":"4","b":"9","c":"2","d":"3"}];
+                assert.equal(JSON.stringify(anyToJSON.data), JSON.stringify(output));
+                done()
+            });  
+        })
+    })
 });
