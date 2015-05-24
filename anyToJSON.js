@@ -42,8 +42,7 @@ function json(options, callback){
         data = JSON.parse(d);
         
         //Send data back to app.js
-        exports.data = data;
-        callback();
+        callback(data);
       });
 }
 
@@ -55,8 +54,7 @@ function csv(options, callback){
       var path = options.path;
       fs.readFile(path, 'utf8', function(err,data){
         csvLib.parse(data, {ltrim: true, columns: true}, function(err, data){
-          exports.data = data;
-          callback();
+          callback(data);
         })
 
       });
@@ -78,8 +76,7 @@ function restJSON(options, callback){
         });
 
         response.on('end', function(){
-            exports.data = (data);
-            callback();
+            callback(data);
         })
     });
 }
@@ -96,8 +93,8 @@ function restCSV(options, callback){
           }
         });
         response.on('end', function(){
-          exports.data= data;
-          callback();          
+          
+          callback(data);          
         })
 
       })
