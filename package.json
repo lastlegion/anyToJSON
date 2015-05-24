@@ -1,6 +1,6 @@
 {
   "name": "anytojson",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Fetches CSV, JSON data from REST APIs, Flat Files etc and converts them to JSON.",
   "main": "anyToJSON.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "semver": "^4.3.3"
   },
   "directories": {
+    "doc": "docs",
     "test": "test"
   },
   "devDependencies": {}

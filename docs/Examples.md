@@ -1,9 +1,9 @@
 # TOC
    - [anyToJSON](#anytojson)
-     - [csv file to json](#anytojson-csv-file-to-json)
-     - [loading json from a file](#anytojson-loading-json-from-a-file)
-     - [loading json from rest](#anytojson-loading-json-from-rest)
-     - [loading csv from rest](#anytojson-loading-csv-from-rest)
+     - [csv file to json](#csv-file-to-json)
+     - [loading json from a file](#loading-json-from-a-file)
+     - [loading json from rest](#loading-json-from-rest)
+     - [loading csv from rest](#loading-csv-from-rest)
  
 # anyToJSON
 
