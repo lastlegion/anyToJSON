@@ -1,6 +1,7 @@
 var fs = require('fs');
 var db = require("odbc")()
-
+var csvLib = require("csv");
+var http = require("http")
 
 
 //
@@ -30,7 +31,7 @@ function odbc(options, callback){
 // - **callback**: the callback function
 
 function json(options, callback){
-      console.log("json")
+      //console.log("json")
       var path = options.path;
       //Read the file using filepath
       fs.readFile(path, 'utf8', function(err, d){
@@ -52,37 +53,32 @@ function json(options, callback){
 // - **callback**: the callback function
 function csv(options, callback){
       var path = options.path;
-      fs.readFile(path, 'utf8', function(err,d){
-        data = d;
-        data = data.toString().replace(/\r/g,"").split("\n");
-        var header = data[0].split(",");
-        data = data.slice(1).map(function(d){
-          var line = {};
-          d.split(",").forEach(function(d,i){
-            line[header[i]] = d;
-          });
-          return line;
-        });    
-        exports.data = data;
-        callback();
+      fs.readFile(path, 'utf8', function(err,data){
+        csvLib.parse(data, {ltrim: true, columns: true}, function(err, data){
+          exports.data = data;
+          callback();
+        })
+
       });
 }
 
 //## restJson(options, callback)
 // - **options**: HTTP header options
 // - **callback**: the callback function
-function restJson(options, callback){
+function restJSON(options, callback){
     var options = options;
     //Make the HTTP GET request
     http.get(options, function(response){
+        response.setEncoding("utf8")
         response.on('data',function(chunk){
             if(chunk){
                 data += chunk;
             }
+            console.log(chunk)
         });
 
         response.on('end', function(){
-            exports.data = JSON.parse(data);
+            exports.data = (data);
             callback();
         })
     });
@@ -91,7 +87,7 @@ function restJson(options, callback){
 //## restCsv(options, callback)
 // - **options**: HTTP header options
 // - **callback**: the callback function
-function restCsv(options, callback){
+function restCSV(options, callback){
       http.get(options, function(response){
         response.on('data', function(chunk){
           chunk = chunk.toString();
@@ -100,7 +96,7 @@ function restCsv(options, callback){
           }
         });
         response.on('end', function(){
-          exports.data=JSON.parse(data);
+          exports.data= data;
           callback();          
         })
 
@@ -109,5 +105,5 @@ function restCsv(options, callback){
 
 exports.json = json;
 exports.csv = csv;
-exports.restJson = restJson;
-exports.restCsv = restCsv;
+exports.restJSON = restJSON;
+exports.restCSV = restCSV;
