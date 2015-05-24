@@ -97,7 +97,4 @@ server.startServer(function(){
 
 # Future Plans
 * Support for XML
-* ~~Support for Databases(RDBMS and NoSQL)~~(Added ODBC Suport)
-* ~~Documentation~~
 * Support for Streaming data
-* ~~Tests~~
