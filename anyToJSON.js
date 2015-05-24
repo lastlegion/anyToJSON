@@ -1,6 +1,6 @@
 var fs = require('fs');
 var csvLib = require("csv");
-
+var http = require("http")
 //
 //## json(path, callback)
 // - **options**: specifies the file path
@@ -41,18 +41,20 @@ function csv(options, callback){
 //## restJson(options, callback)
 // - **options**: HTTP header options
 // - **callback**: the callback function
-function restJson(options, callback){
+function restJSON(options, callback){
     var options = options;
     //Make the HTTP GET request
     http.get(options, function(response){
+        response.setEncoding("utf8")
         response.on('data',function(chunk){
             if(chunk){
                 data += chunk;
             }
+            console.log(chunk)
         });
 
         response.on('end', function(){
-            exports.data = JSON.parse(data);
+            exports.data = (data);
             callback();
         })
     });
@@ -61,7 +63,7 @@ function restJson(options, callback){
 //## restCsv(options, callback)
 // - **options**: HTTP header options
 // - **callback**: the callback function
-function restCsv(options, callback){
+function restCSV(options, callback){
       http.get(options, function(response){
         response.on('data', function(chunk){
           chunk = chunk.toString();
@@ -70,7 +72,7 @@ function restCsv(options, callback){
           }
         });
         response.on('end', function(){
-          exports.data=JSON.parse(data);
+          exports.data= data;
           callback();          
         })
 
@@ -79,5 +81,5 @@ function restCsv(options, callback){
 
 exports.json = json;
 exports.csv = csv;
-exports.restJson = restJson;
-exports.restCsv = restCsv;
+exports.restJSON = restJSON;
+exports.restCSV = restCSV;
