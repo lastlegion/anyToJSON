@@ -1,12 +1,15 @@
 # anyToJSON
 
+Fetches data from anywhere(or atleast strives to) and converts it to JSON. 
+
+
 # TOC
    - [Examples](#Examples)
      - [csv file to json](#csv-file-to-json)
      - [loading json from a file](#loading-json-from-a-file)
      - [loading json from rest](#loading-json-from-rest)
      - [loading csv from rest](#loading-csv-from-rest)
-   - [Support](#support)
+   - [Supported Data Formats](#support)
    - [Future Plans](#future-plans)
 
 
