@@ -104,3 +104,4 @@ exports.json = json;
 exports.csv = csv;
 exports.restJSON = restJSON;
 exports.restCSV = restCSV;
+exports.odbc = odbc;

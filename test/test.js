@@ -66,5 +66,11 @@ describe("anyToJSON", function(){
             })
         })
     });
-
+    describe("loading odbc", function(){
+        it("should try to connect", function(done){
+            anyToJSON.odbc({cn: "dsn=mysql;server=localhost;user=root;database=test;port=3306;password=123456;command timeout=30000;", table: "titanicClean"}, function(){
+                done();
+            })
+        })
+    })
 });
