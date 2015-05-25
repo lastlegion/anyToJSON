@@ -18,8 +18,8 @@ function odbc(options, callback){
       }
 
       db.query("select * from "+table, function(err, rows, moreResults){
-          exports.data = rows;
-          callback();
+          var data = rows;
+          callback(data);
       })
    });
 
