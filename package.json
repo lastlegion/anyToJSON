@@ -37,5 +37,8 @@
     "doc": "docs",
     "test": "test"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "optionalDependencies": {
+    "odbc": "^1.1.6"
+  }
 }
