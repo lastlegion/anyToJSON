@@ -1,5 +1,5 @@
 var fs = require('fs');
-var db = require("odbc")()
+//var db = require("odbc")()
 var csvLib = require("csv");
 var http = require("http")
 
