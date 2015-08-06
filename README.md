@@ -1,6 +1,6 @@
-# anyToJSON
+# anyToJSON [![Build Status](https://travis-ci.org/lastlegion/anyToJSON.svg?branch=master)](https://travis-ci.org/lastlegion/anyToJSON)
 
-Fetches data from anywhere(or atleast strives to) and converts it to JSON. 
+Fetches data from anywhere(or atleast strives to) and converts it to JSON.  Currently converts flat-file JSON, flat-file CSV, REST JSON, REST CSV and Databases(via ODBC) to JSON.
 
 
 # TOC
