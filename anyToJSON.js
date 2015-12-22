@@ -64,20 +64,23 @@ function csv(options, callback){
 // - **options**: HTTP header options
 // - **callback**: the callback function
 function restJSON(options, callback){
-    var options = options;
+    //var options = options;
     //Make the HTTP GET request
     http.get(options, function(response){
-        response.setEncoding("utf8")
-        response.on('data',function(chunk){
+        response.setEncoding("utf8");
+        var data = "";
+        response.on("data",function(chunk){
             if(chunk){
                 data += chunk;
             }
-            console.log(chunk)
+            //console.log(chunk)
         });
 
-        response.on('end', function(){
-            callback(data);
-        })
+        response.on("end", function(){  
+            var dataj = JSON.parse(data);
+
+            callback(dataj);
+        });
     });
 }
 
@@ -85,6 +88,7 @@ function restJSON(options, callback){
 // - **options**: HTTP header options
 // - **callback**: the callback function
 function restCSV(options, callback){
+    var data = {};
       http.get(options, function(response){
         response.on('data', function(chunk){
           chunk = chunk.toString();
